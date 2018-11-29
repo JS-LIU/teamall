@@ -1,9 +1,6 @@
 package com.example.teamall;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,18 +12,24 @@ public class Store {
     Long id;
 
 
-    private ArrayList productList = new ArrayList();
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> productList = new ArrayList<>();
 
     public Store() {
     }
 
 
-    public void addProduct(String name) {
-        productList.add(name);
+    public void addProduct(Product product) {
+        productList.add(product);
     }
 
-    public int getCount() {
-        return 1;
+
+    public String printProductList(){
+        String s = "";
+        for(int i = 0;i < productList.size();i++){
+            s += "{"+productList.get(i).getName()+"},";
+        }
+        return s;
     }
 
 }
