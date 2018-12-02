@@ -39,7 +39,6 @@ public class ProductService {
     }
 
     public ShoppingCartProduct convertToShoppingCartProduct(Product p) {
-        ShoppingCartProduct shoppingCartProduct = new ShoppingCartProduct();
-        return p;
+        return new ShoppingCartProduct(p);
     }
 }

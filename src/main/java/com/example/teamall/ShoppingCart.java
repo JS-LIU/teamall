@@ -1,5 +1,7 @@
 package com.example.teamall;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ public class ShoppingCart {
     @Id
     Long id;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     List<ShoppingCartProduct> productList = new ArrayList<>();
 
     public ShoppingCart() {

@@ -55,8 +55,11 @@ public class TeamallApplicationTests {
         userService.createUser("13812345678", "王强");
 
     }
-    @Test void TestAddProduct(){
+    @Test
+    public void TestAddProduct(){
         User user = userService.findUserByTelephone("18801233565");
+        shoppingCartService.addProduct(user, 1L);
+        shoppingCartService.addProduct(user, 2L);
 //        shoppingCartService.addProduct(user,1);
     }
 

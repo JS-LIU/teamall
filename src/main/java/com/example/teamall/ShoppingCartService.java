@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -13,9 +12,9 @@ public class ShoppingCartService {
     }
 
     @Autowired
-    ProductRepository productRepository;
-    @Autowired
     ProductService productService;
+    @Autowired
+    ShoppingCartProductService shoppingCartProductService;
 
     /**
      * 加入购物车
@@ -23,13 +22,10 @@ public class ShoppingCartService {
      * @param productId
      * @return
      */
-    public List addProduct(User user, Long productId) {
+    public void addProduct(User user, Long productId) {
         Product p = productService.findById(productId);
-        ShoppingCartProduct shoppingCartProduct = productService.convertToShoppingCartProduct(p);
-
+        ShoppingCartProduct shoppingCartProduct = shoppingCartProductService.createProduct(p);
         ShoppingCart shoppingCart = user.getShoppingCart();
-        return shoppingCart.addProduct(shoppingCartProduct);
+        shoppingCart.addProduct(shoppingCartProduct);
     }
-
-
 }

@@ -4,20 +4,18 @@ import javax.persistence.*;
 
 @Entity
 public class User {
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     Long id;
 
     String name;
     String telephone;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    ShoppingCart shoppingCart;
+    @OneToOne(targetEntity = ShoppingCart.class,cascade = CascadeType.ALL)
+    ShoppingCart shoppingCart = new ShoppingCart();
 
     public User(String telephone, String name) {
         this.name = name;
         this.telephone = telephone;
-        createShoppingCart();
     }
 
     public String getTelephone() {
@@ -38,6 +36,4 @@ public class User {
         this.shoppingCart = new ShoppingCart();
         return shoppingCart;
     }
-
-
 }

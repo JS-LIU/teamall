@@ -27,12 +27,4 @@ public class UserService{
     public User findUserByTelephone(String telephone){
         return userRepository.findUserByTelephone(telephone);
     }
-
-
-
-
-
-
-
-
 }
