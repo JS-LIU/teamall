@@ -24,6 +24,8 @@ public class TeamallApplicationTests {
     UserService userService;
     @Autowired
     ShoppingCartService shoppingCartService;
+    @Autowired
+    ShopService shopService;
 
     //  向商品库里添加商品
     @Test
@@ -58,11 +60,19 @@ public class TeamallApplicationTests {
     @Test
     public void TestAddProduct(){
         User user = userService.findUserByTelephone("18801233565");
-        shoppingCartService.addProduct(user, 1L);
-        shoppingCartService.addProduct(user, 2L);
+        shoppingCartService.addProduct(user, 23L);
+        shoppingCartService.addProduct(user, 24L);
 //        shoppingCartService.addProduct(user,1);
     }
+    @Test
+    public void TestCreateShop(){
 
+    }
+    @Test
+    public void TestAddShopProductToShop(){
+        shopService.addProduct(1L,23L);
+        shopService.addProduct(1L,24L);
+    }
     @Test
     public void TestEqual() {
         String a = "llala";

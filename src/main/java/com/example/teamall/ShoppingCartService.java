@@ -28,4 +28,7 @@ public class ShoppingCartService {
         ShoppingCart shoppingCart = user.getShoppingCart();
         shoppingCart.addProduct(shoppingCartProduct);
     }
+//    public void addProduct(User user,Long shopProductId){
+//        Product p = shopProductService.findById(shopProductId);
+//    }
 }

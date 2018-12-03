@@ -10,7 +10,7 @@ public class User {
 
     String name;
     String telephone;
-    @OneToOne(targetEntity = ShoppingCart.class,cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     ShoppingCart shoppingCart = new ShoppingCart();
 
     public User(String telephone, String name) {
