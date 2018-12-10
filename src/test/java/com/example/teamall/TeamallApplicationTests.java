@@ -27,21 +27,6 @@ public class TeamallApplicationTests {
     @Autowired
     ShopService shopService;
 
-    //  向商品库里添加商品
-    @Test
-    public void TestAddToStore() {
-        Store s = storeService.createStore();
-        s.addProduct(new Product("金果饮"));
-        s.addProduct(new Product("八宝茶"));
-        System.out.println("商品列表" + s.printProductList());
-
-
-//        StoreService storeService = new StoreService();
-//        storeService.addProduct("金果饮");
-//	    assert (storeService.getCount() == 1);
-//	    System.out.println("加入成功");
-
-    }
 
     @Test
     public void TestCreateProduct() {
@@ -51,28 +36,56 @@ public class TeamallApplicationTests {
     }
 
     @Test
-    public void TestCreateUser() {
-        userService.createUser("18801233565", "王强");
-        userService.createUser("18801233565", "六点起");
-        userService.createUser("13812345678", "王强");
-
-    }
-    @Test
     public void TestAddProduct(){
         User user = userService.findUserByTelephone("18801233565");
-        shoppingCartService.addProduct(user, 23L);
-        shoppingCartService.addProduct(user, 24L);
+//        shoppingCartService.addProduct(user, 1L);
+//        shoppingCartService.addProduct(user, 2L);
 //        shoppingCartService.addProduct(user,1);
     }
-    @Test
-    public void TestCreateShop(){
 
-    }
+    //  我要有多个店铺多个购物车
+    /**
+     * 创建店铺
+     * 将商品加入到店铺中
+     */
     @Test
     public void TestAddShopProductToShop(){
-        shopService.addProduct(1L,23L);
-        shopService.addProduct(1L,24L);
+        shopService.createShop("1号店");
+        shopService.createShop("2号店");
+        shopService.addProduct(1L,1L);
+        shopService.addProduct(1L,2L);
     }
+
+    /**
+     * 看一下shopId = 1 店铺的数据对不对
+     */
+    @Test
+    public void Test1LShopProductNum(){
+        int length = shopService.getShopProductLength(1L);
+        assert length == 2;
+        System.out.println(shopService.getShopProductListString(1L));
+    }
+    /**
+     * 创建用户
+     */
+    @Test
+    public void TestCreateUser(){
+        userService.createUser("18801233565","刘1");
+        userService.createUser("18801233565","刘2");
+    }
+    /**
+     * 将指定店铺的商品加入到购物车中
+     *
+     */
+    @Test
+    public void TestAddShopProductToShoppingCart(){
+
+//        User user = userService.findUserByTelephone("18801233565");
+
+        shoppingCartService.addProduct(1L,1L,1L);
+//        shoppingCartService.addProduct(1L,1L);
+    }
+
     @Test
     public void TestEqual() {
         String a = "llala";

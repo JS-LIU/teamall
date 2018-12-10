@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 public class Store {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     Long id;
 

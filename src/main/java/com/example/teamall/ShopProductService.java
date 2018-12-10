@@ -10,9 +10,16 @@ import javax.transaction.Transactional;
 public class ShopProductService {
     @Autowired
     ShopProductRepository shopProductRepository;
+    @Autowired
+    ProductService productService;
 
-    public void createShopProduct(long productId) {
-
+    public ShopProduct createShopProduct(Long productId,Long shopId) {
+        ShopProduct shopproduct = productService.createShopProduct(productId,shopId);
+        shopProductRepository.save(shopproduct);
+        return shopproduct;
     }
 
+    private ShopProduct findProductById(Long shopProductId) {
+        return shopProductRepository.findById(shopProductId).orElse(null);
+    }
 }

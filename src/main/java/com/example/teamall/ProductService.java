@@ -21,6 +21,7 @@ public class ProductService {
             productRepository.save(p);
         }
     }
+
     private Product findProductByName(String name){
         Product p = productRepository.findByName(name);
         if(p == null){
@@ -35,10 +36,16 @@ public class ProductService {
 
     public Product findById(Long id) {
         return productRepository.findById(id).orElse(null);
-//        return productRepository.findOne(id);
     }
 
-    public ShoppingCartProduct convertToShoppingCartProduct(Product p) {
-        return new ShoppingCartProduct(p);
+
+    public ShoppingCartProduct createShoppingCartProduct(Long shopId, Long productId) {
+        Product product = findById(productId);
+        return new ShoppingCartProduct(shopId,product);
+    }
+
+    public ShopProduct createShopProduct(Long productId,Long shopId) {
+        Product product = findById(productId);
+        return new ShopProduct(product,0L,shopId);
     }
 }
