@@ -35,13 +35,6 @@ public class TeamallApplicationTests {
         List productList = productService.findAllProduct();
     }
 
-    @Test
-    public void TestAddProduct(){
-        User user = userService.findUserByTelephone("18801233565");
-//        shoppingCartService.addProduct(user, 1L);
-//        shoppingCartService.addProduct(user, 2L);
-//        shoppingCartService.addProduct(user,1);
-    }
 
     //  我要有多个店铺多个购物车
     /**
@@ -56,15 +49,6 @@ public class TeamallApplicationTests {
         shopService.addProduct(1L,2L);
     }
 
-    /**
-     * 看一下shopId = 1 店铺的数据对不对
-     */
-    @Test
-    public void Test1LShopProductNum(){
-        int length = shopService.getShopProductLength(1L);
-        assert length == 2;
-        System.out.println(shopService.getShopProductListString(1L));
-    }
     /**
      * 创建用户
      */

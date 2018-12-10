@@ -37,6 +37,10 @@ public class ShoppingCartProduct {
         return id;
     }
 
+    public Long getProductId() {
+        return productId;
+    }
+
     public int getCount() {
         return count;
     }
@@ -48,4 +52,5 @@ public class ShoppingCartProduct {
     public void reCalcCount(int count) {
         this.count += count;
     }
+
 }

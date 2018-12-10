@@ -39,7 +39,8 @@ public class ShoppingCart {
     }
 
     public List addProduct(ShoppingCartProduct shoppingCartProduct){
-        ShoppingCartProduct shoppingCartP = findShoppingCartProduct(shoppingCartProduct.getId());
+        ShoppingCartProduct shoppingCartP = findShoppingCartProduct(shoppingCartProduct.getProductId());
+
         if(shoppingCartP == null){
             productList.add(shoppingCartProduct);
         }else{
@@ -50,7 +51,7 @@ public class ShoppingCart {
 
     private ShoppingCartProduct findShoppingCartProduct(Long shoppingCartProductId) {
         for(ShoppingCartProduct shoppingCartProduct:productList){
-            if(shoppingCartProduct.getId().equals(shoppingCartProductId)){
+            if(shoppingCartProduct.getProductId().equals(shoppingCartProductId)){
                 return shoppingCartProduct;
             }
         }
