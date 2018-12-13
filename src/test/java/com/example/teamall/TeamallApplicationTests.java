@@ -78,5 +78,9 @@ public class TeamallApplicationTests {
         assert a == b;
         System.out.println("相等");
     }
+    @Test
+    public void TestUploadPic(){
+//        ueditorService.upLoadPic();
+    }
 
 }
